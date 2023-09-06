@@ -1,14 +1,15 @@
 const validationInput = document.querySelector("#validation-input");
 
 const handleBlur = (event) => {
-  event.currentTarget.classList.add("valid");
-  if (event.currentTarget.dataset.length < event.currentTarget.value.length) {
-    event.currentTarget.classList.replace("valid", "invalid");
+  if (
+    Number(event.currentTarget.dataset.length) ===
+    event.currentTarget.value.trim().length
+  ) {
+    event.currentTarget.classList.remove("invalid");
+    event.currentTarget.classList.add("valid");
   } else {
-    event.currentTarget.classList.replace("invalid", "valid");
-  }
-  if (event.currentTarget.value.length <= 0) {
     event.currentTarget.classList.remove("valid");
+    event.currentTarget.classList.add("invalid");
   }
 };
 

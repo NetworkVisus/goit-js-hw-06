@@ -14,11 +14,12 @@ const images = [
 ];
 
 const list = document.querySelector(".gallery");
-const imagesArr = [];
 
-images.forEach(({ url, alt }) => {
-  const newImageItem = `<li class="galerry-item"><img src = ${url} alt=${alt}  class="image-gallery"></li>`;
-  imagesArr.push(newImageItem);
-});
+const imagesHTML = images
+  .map(({ url, alt }) => {
+    const newImageItem = `<li class="galerry-item"><img src = ${url} alt=${alt}  class="image-gallery"></li>`;
+    return newImageItem;
+  })
+  .join("");
 
-list.insertAdjacentHTML("beforeend", imagesArr.join(""));
+list.insertAdjacentHTML("beforeend", imagesHTML);

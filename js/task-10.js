@@ -9,16 +9,19 @@ const btnCreate = document.querySelector("[data-create]");
 const btnDestroy = document.querySelector("[data-destroy]");
 const input = document.querySelector("input");
 
-let divWidth = 30;
-let divHeight = 30;
+const maxInput = Number(input.getAttribute("max"));
+const minInput = Number(input.getAttribute("min"));
+const stepInput = Number(input.getAttribute("step"));
 
 function createBoxes(amount) {
-  if (amount < 0) {
-    window.alert("Amount can't be lower than 0");
+  let divWidth = 30;
+  let divHeight = 30;
+  if (amount < minInput || amount > maxInput) {
+    window.alert(`Amount must be in the range from ${minInput} to ${maxInput}`);
     return;
   }
   const boxesInDOM = [];
-  for (let i = 0; i < amount; i += 1) {
+  for (let i = 0; i < amount; i += stepInput) {
     boxesInDOM.push(
       `<div style="background-color:${getRandomHexColor()};width:${divWidth}px;height:${divHeight}px;"></div>`
     );
@@ -38,6 +41,5 @@ function handleCreation(event) {
 
 function destroyBoxes() {
   collection.innerHTML = "";
-  divWidth = 30;
-  divHeight = 30;
+  input.value = "";
 }

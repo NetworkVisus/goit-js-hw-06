@@ -5,6 +5,7 @@ const categoriesArr = [...categories.children];
 
 console.log(`Number of categories: ${categoriesArr.length}`);
 categoriesArr.forEach((el) => {
-  console.log(`Category: ${el.querySelector("h2").textContent}`);
-  console.log(`Elements: ${el.querySelectorAll("li").length}`);
+  console.log(`Category: ${el.firstElementChild.textContent}`);
+  console.log(`Elements: ${el.lastElementChild.children.length}`);
+  console.log();
 });

@@ -9,13 +9,11 @@ const ingredients = [
 
 const list = document.querySelector("#ingredients");
 
-const ingredientsJS = [];
-
-ingredients.forEach((el) => {
-  const newLi = document.createElement("li");
-  newLi.textContent = el;
-  newLi.className = "item";
-  ingredientsJS.push(newLi);
-});
-
-list.append(...ingredientsJS);
+list.append(
+  ...ingredients.map((el) => {
+    const newLi = document.createElement("li");
+    newLi.textContent = el;
+    newLi.className = "item";
+    return newLi;
+  })
+);
